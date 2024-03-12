@@ -11,23 +11,6 @@ function App() {
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch()
 
-  const [QR, setQR] = useState(null)
-
-  
-  const generateQR = async text => {
-    try {
-      let QRSrc = await QRCode.toDataURL(text)
-      setQR(QRSrc)
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-
-
-  useEffect(() => {
-        generateQR('https://www.vitoapp.mx/home')
-  },)
   
 
   return (
@@ -51,9 +34,6 @@ function App() {
         <button onClick={() => dispatch(incrementByAmount(2))}>
           Increment By 2
         </button>
-      <img src={QR} alt="QR" />
-
-      <a href={QR} download>Download image</a>
       </div>
     </>
   )
