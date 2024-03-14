@@ -8,6 +8,7 @@ export const PokemonDescription = ({ pokemon = null }) => {
     <>
     { pokemon &&
     <div>
+      <p>{pokemon?.name}</p>
       <p>height: {pokemon?.height}</p>
       <p>weight: {pokemon?.weight}</p>
       <p>type:   {pokemon?.types[0].type.name}</p>

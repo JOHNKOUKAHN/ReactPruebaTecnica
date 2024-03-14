@@ -4,38 +4,49 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PokemonCard } from '../components/PokemonCard'
 import { usePokedex } from '../hooks/usePokedex'
+import { PokemonList } from '../components/PokemonList'
+import { ErrorElement } from '../components/ErrorElement'
 
 
 export const Pokedex = () => {
 
   const { 
           offset,
-          limit,
+          errorMessage,
           selectedPokemon, 
           pokemonList, 
           previous,
           next,
 
           startFetchPokemonList, 
-          startFetchPokemon,
+          startFetchPokemonByID,
           getNextPage,
           getPreviousPage} = usePokedex()
 
   const navigate = useNavigate();
 
-  const handleSelection = (pokemon) => {
-      
-    startFetchPokemon({pokemon})  
-
+  const handleSelection = (url) => {
+    
+    const pokemonID = getID(url)
+    startFetchPokemonByID({pokemonID})  
+    
   }  
-
-  const handleNavigation = (pokemon) => {
-      
-    const slicedUrl  = pokemon.url.split('/')
-    const pokemonID  = slicedUrl[slicedUrl.length -2]
+  
+  const handleNavigation = (url) => {
+    
+    const pokemonID = getID(url)
     navigate(`/pokedex/${pokemonID}`) 
-
+    
   }  
+  
+  const getID = (url) => {
+    
+    const slicedUrl  = url.split('/')
+    const pokemonID  = slicedUrl[slicedUrl.length -2]
+    return pokemonID
+
+  }
+
   useEffect(() => {
 
     startFetchPokemonList()
@@ -57,18 +68,18 @@ export const Pokedex = () => {
 
       <PokemonCard pokemon={selectedPokemon} />
 
-      <ul className=' grid grid-cols-2 gap-1'>
-        {pokemonList.map((pokemon) => (
-          <li key={pokemon.name} onDoubleClick={() => handleNavigation(pokemon) } onClick={ () => handleSelection(pokemon)}>{pokemon.name}</li>
-        ))
 
-        }
-      </ul>  
+      <PokemonList pokemons={pokemonList} handleDoubleClick={handleNavigation} handleClick={handleSelection}/>
 
       <button disabled={!previous} onClick={() => getPreviousPage()}>prev</button>
       
       <button disabled={!next} onClick={() => getNextPage()}>next</button>
+      
+      { errorMessage &&
+        <ErrorElement errorMessage={errorMessage}/>
+      }
       </main>
+
       }
     </>
   )

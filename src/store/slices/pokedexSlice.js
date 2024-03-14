@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  loading: false,
+  loadingPokemon: false,
+  loadingPokemonList: false,
   selectedPokemon: null,
   pokemonList: [],
   previous:false,
@@ -15,6 +16,12 @@ export const pokedexSlice = createSlice({
   name: 'pokedex',
   initialState,
   reducers: {
+    onSetLoadingPokemon:(state, {payload})=>{
+      state.loadingPokemon = payload;
+    },
+    onSetLoadingPokemonList:(state, {payload})=>{
+      state.loadingPokemonList = payload;
+    },
     onLoadPokemons: (state, { payload }) => {
       state.pokemonList = payload;
     },
@@ -52,6 +59,8 @@ export const {
                 onSelectPokemon,
                 onUpdateLimit,
                 onUpdateOffset,
+                onSetLoadingPokemon,
+                onSetLoadingPokemonList,
                 onDisabeleNextSearch,
                 onDisabelePreviousSearch,
                 onSafePokemonSearch,
