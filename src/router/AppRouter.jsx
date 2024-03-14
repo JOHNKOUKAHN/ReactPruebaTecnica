@@ -1,13 +1,14 @@
-import { Route, Routes } from "react-router-dom"
-import App from "../App"
-import { TestPage } from "../pages/TestPage"
+import { Navigate, Route, Routes } from "react-router-dom"
+import { Pokedex } from "../pages/Pokedex"
+import { PokemonDetails } from "../pages/PokemonDetails"
 
 export const AppRouter = () => {
   return (
     <>
         <Routes>
-            <Route path="/" element={<App/>}/>
-            <Route path="/test" element={<TestPage/>}/>
+            <Route path="/pokedex" element={<Pokedex/>}/>
+            <Route path="/pokedex/:pokemonID" element={<PokemonDetails/>}/>
+            <Route path="/*" element={<Navigate to={"/pokedex"}/>}/>
         </Routes>
     </>
   )

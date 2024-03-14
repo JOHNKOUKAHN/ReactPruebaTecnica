@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { counterSlice } from './slices'
+import { pokedexSlice } from './slices/pokedexSlice'
 
 export const store = configureStore({
   reducer: {
-        counter: counterSlice.reducer,
+        pokedex: pokedexSlice.reducer,
   },
 })
