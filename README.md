@@ -2,6 +2,11 @@
 
 Una aplicación de Pokédex desarrollada con React, Vite, Tailwind CSS y Cypress.
 
+## Demo
+
+[Ver demo en línea](https://reactpruebatecnica-production.up.railway.app/pokedex) 
+
+
 ## Descripción
 
 Esta aplicación de Pokédex te permite explorar y buscar información sobre diferentes Pokémon. Puedes ver detalles como tipos, habilidades, estadísticas y más.
