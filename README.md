@@ -50,7 +50,7 @@ Para ejecutar la aplicación en tu entorno local, sigue estos pasos:
 Este proyecto utiliza Cypress para realizar pruebas de extremo a extremo. Para ejecutar las pruebas, asegúrate de tener la aplicación en ejecución y luego ejecuta:
 
 ```bash
-   npm run dev
+   npm run test
 ```
 
 ## Tecnologías utilizadas
