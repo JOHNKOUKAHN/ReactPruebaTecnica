@@ -70,8 +70,8 @@ export const Pokedex = () => {
           </main>
 
           <div className='flex flex-row gap-4 justify-center align-items-center'>
-            <PaginationButton disableFlag={previous} text={'previous'} handleClick={getPreviousPage} />
-            <PaginationButton disableFlag={next} text={'next'} handleClick={getNextPage} />
+            <PaginationButton data-testid="prevButton" disableFlag={previous} text={'previous'} handleClick={getPreviousPage} />
+            <PaginationButton data-testid="nextButton" disableFlag={next} text={'next'} handleClick={getNextPage} />
           </div>
 
         </div>

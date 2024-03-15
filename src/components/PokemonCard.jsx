@@ -7,13 +7,13 @@ export const PokemonCard = ({ pokemon }) => {
 
     return (
         <>
-            <div className='w-5/6 h-[300px] flex justify-center justify-items-center items-center'>
+            <div data-testid="pokemonCard"  className='w-5/6 h-[300px] flex justify-center justify-items-center items-center'>
                 
                 {loadingPokemon
                     ?
                     <img className='max-w-[70%] animate-pulse' src={pokeballImage} alt="pokemon sprite" />
                     :
-                    <img className={`max-w-[70%]  ${!pokemon && 'animate-bounce'}`} src={pokemon ? pokemon.img : pokeballImage} alt="pokemon sprite" />
+                    <img data-testid="pokemonImage" className={`max-w-[70%]  ${!pokemon && 'animate-bounce'}`} src={pokemon ? pokemon.img : pokeballImage} alt="pokemon sprite" />
                 }
             </div>
         </>

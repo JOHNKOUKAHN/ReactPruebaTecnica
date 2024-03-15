@@ -6,13 +6,13 @@ export const PokemonList = ({ pokemons, handleDoubleClick, handleClick }) => {
 
     return (
         <>
-            <div className="w-full min-h-[400px]">
+            <div data-testid="pokemonList" className="w-full min-h-[400px]">
 
                 {loadingPokemonList
                     ?
-                    <p>Loading</p>
+                    <p data-testid="loadingPokemonList" >Loading</p>
                     :
-                    <ul className=' grid grid-cols-2 gap-2'>
+                    <ul data-testid="loadedPokemonList" className=' grid grid-cols-2 gap-2 '>
                         {pokemons.map((pokemon) => (
                             <li
                                 className="bg-gray-600 rounded-lg  text-center cursor-pointer"

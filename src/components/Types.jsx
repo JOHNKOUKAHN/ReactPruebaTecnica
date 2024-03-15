@@ -6,7 +6,7 @@ export const Types = ({ types }) => {
 
             <p className='font-bold text-center'>Types</p>
 
-            <ul className=" grid grid-cols-1 sm:grid-cols-2 gap-1 align-center justify-items-center">
+            <ul data-testid="pokemonTypes" className=" grid grid-cols-1 sm:grid-cols-2 gap-1 align-center justify-items-center">
                 {
                     types.map((type) => (
                         <Cell
