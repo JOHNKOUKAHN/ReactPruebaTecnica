@@ -6,43 +6,44 @@ import { PokemonCard } from '../components/PokemonCard'
 import { usePokedex } from '../hooks/usePokedex'
 import { PokemonList } from '../components/PokemonList'
 import { ErrorElement } from '../components/ErrorElement'
+import { PaginationButton } from '../components/PaginationButton'
 
 
 export const Pokedex = () => {
 
-  const { 
-          offset,
-          errorMessage,
-          selectedPokemon, 
-          pokemonList, 
-          previous,
-          next,
+  const {
+    offset,
+    errorMessage,
+    selectedPokemon,
+    pokemonList,
+    previous,
+    next,
 
-          startFetchPokemonList, 
-          startFetchPokemonByID,
-          getNextPage,
-          getPreviousPage} = usePokedex()
+    startFetchPokemonList,
+    startFetchPokemonByID,
+    getNextPage,
+    getPreviousPage } = usePokedex()
 
   const navigate = useNavigate();
 
   const handleSelection = (url) => {
-    
+
     const pokemonID = getID(url)
-    startFetchPokemonByID({pokemonID})  
-    
-  }  
-  
+    startFetchPokemonByID({ pokemonID })
+
+  }
+
   const handleNavigation = (url) => {
-    
+
     const pokemonID = getID(url)
-    navigate(`/pokedex/${pokemonID}`) 
-    
-  }  
-  
+    navigate(`/pokedex/${pokemonID}`)
+
+  }
+
   const getID = (url) => {
-    
-    const slicedUrl  = url.split('/')
-    const pokemonID  = slicedUrl[slicedUrl.length -2]
+
+    const slicedUrl = url.split('/')
+    const pokemonID = slicedUrl[slicedUrl.length - 2]
     return pokemonID
 
   }
@@ -50,35 +51,40 @@ export const Pokedex = () => {
   useEffect(() => {
 
     startFetchPokemonList()
-    
+
   }, [])
 
   useEffect(() => {
     startFetchPokemonList()
-    
-  }, [offset])
-  
 
-  
+  }, [offset])
+
+
+
 
   return (
     <>
-    { pokemonList &&
-      <main className='w-full grid grid-cols-2 justify-center items-center p-[3%]'>
+      {pokemonList &&
+        <div className=' p-[5%]'>
+          <main className='grid grid-cols-1 sm:grid-cols-2  justify-center items-center p-4'>
 
-      <PokemonCard pokemon={selectedPokemon} />
+            <PokemonCard pokemon={selectedPokemon} />
 
 
-      <PokemonList pokemons={pokemonList} handleDoubleClick={handleNavigation} handleClick={handleSelection}/>
+            <PokemonList pokemons={pokemonList} handleDoubleClick={handleNavigation} handleClick={handleSelection} />
 
-      <button disabled={!previous} onClick={() => getPreviousPage()}>prev</button>
-      
-      <button disabled={!next} onClick={() => getNextPage()}>next</button>
-      
-      { errorMessage &&
-        <ErrorElement errorMessage={errorMessage}/>
-      }
-      </main>
+
+            {errorMessage &&
+              <ErrorElement errorMessage={errorMessage} />
+            }
+          </main>
+
+          <div className='flex flex-row gap-4 justify-center align-items-center'>
+          <PaginationButton disableFlag={previous} text={'previous'} handleClick={getPreviousPage} />
+          <PaginationButton disableFlag={next} text={'next'} handleClick={getNextPage} />
+          </div>  
+
+        </div>
 
       }
     </>

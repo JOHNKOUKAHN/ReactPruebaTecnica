@@ -10,31 +10,34 @@ export const PokemonDetails = () => {
 
   const navigate = useNavigate();
 
-  const {selectedPokemon, errorMessage,startFetchPokemonByID} = usePokedex();
+  const { selectedPokemon, errorMessage, startFetchPokemonByID } = usePokedex();
 
-  const {pokemonID} =  useParams();
+  const { pokemonID } = useParams();
 
 
   useEffect(() => {
-    
-    if (Number(pokemonID) > 151 || Number(pokemonID) < 1 ) {
-     navigate('/pokedex');
-     return
-  }
-    startFetchPokemonByID({pokemonID})
+
+    if (Number(pokemonID) > 151 || Number(pokemonID) < 1) {
+      navigate('/pokedex');
+      return
+    }
+    startFetchPokemonByID({ pokemonID })
 
   }, [])
-  
+
 
   return (
     <>
-    <div className='grid grid-cols-2 gap-2 justify-center items-center'>
-      
-      <PokemonCard pokemon={selectedPokemon}/>
-      <PokemonDescription pokemon={selectedPokemon}/>
-      <Link to={'/pokedex'}>Back To Pokedex</Link>
-      <ErrorElement errorMessage={errorMessage}/>
-    </div>
+      <div className='grid grid-cols-1 sm:grid-cols-2  justify-center items-center p-4'>
+
+        <PokemonCard pokemon={selectedPokemon} />
+        <PokemonDescription pokemon={selectedPokemon} />
+        <ErrorElement errorMessage={errorMessage} />
+      </div>
+
+      <div className=' flex flex-row justify-center align-items-center'>
+        <Link className=' bg-amber-900 text-gray-200 p-2 rounded-xl' to={'/pokedex'}>Back To Pokedex</Link>
+      </div>
 
     </>
   )
