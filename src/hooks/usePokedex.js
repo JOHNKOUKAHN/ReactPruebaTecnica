@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { formatPokemon } from "../utils/formatPokemon";
 
 import {
     onLoadPokemons,
@@ -14,6 +15,7 @@ import {
     onSetLoadingPokemonList
 } from "../store/slices/pokedexSlice";
 
+
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
 
 export const usePokedex = () => {
@@ -22,14 +24,12 @@ export const usePokedex = () => {
 
     const { pokemonList, loadingPokemon, loadingPokemonList, selectedPokemon, offset, limit, errorMessage, previous, next } = useSelector(state => state.pokedex);
 
-
     const startFetchPokemonList = async () => {
 
         dispatch(onSetLoadingPokemonList(true))
         dispatch(onCleanError(null))
 
         try {
-
             const response = await fetch(`${baseUrl}?offset=${offset}&limit=${limit}`);
             const fetchedPokemons = await response.json();
             const payload = fetchedPokemons.results;
@@ -43,7 +43,6 @@ export const usePokedex = () => {
 
             dispatch(onSetLoadingPokemonList(false))
         }
-
     }
 
     const startFetchPokemonByID = async ({ pokemonID }) => {
@@ -97,31 +96,7 @@ export const usePokedex = () => {
         }
     }
 
-    const formatPokemon = (pokemon) => {
-
-        const stats = pokemon.stats.map(stat => {
-            return {
-                name: stat.stat.name,
-                baseValue: stat.base_stat
-            }
-        })
-
-        const types = pokemon.types.map(type => { return { name: type.type.name } })
-        const moves = pokemon.moves.map(move => { return { name: move.move.name } })
-        const abilities = pokemon.abilities.map(ability => { return { name: ability.ability.name } })
-
-        return {
-            name: pokemon.name,
-            img: pokemon.sprites.other.dream_world.front_default,
-            height: pokemon.height,
-            weight: pokemon.weight,
-            stats,
-            moves,
-            types,
-            abilities,
-        }
-    }
-
+    
     return {
 
         //properties
