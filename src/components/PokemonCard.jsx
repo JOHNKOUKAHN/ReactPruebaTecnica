@@ -8,13 +8,13 @@ export const PokemonCard = ({ pokemon }) => {
     return (
         <>
             <div className='w-5/6 h-[300px] flex justify-center justify-items-center items-center'>
-
-            {loadingPokemon
-                ?
-                <img className='max-w-[70%] animate-pulse' src={pokeballImage} alt="pokemon sprite" />
-                :
-                <img className={`max-w-[70%]  ${ !pokemon && 'animate-bounce'}`} src={pokemon ? pokemon.img : pokeballImage} alt="pokemon sprite" />
-            }
+                
+                {loadingPokemon
+                    ?
+                    <img className='max-w-[70%] animate-pulse' src={pokeballImage} alt="pokemon sprite" />
+                    :
+                    <img className={`max-w-[70%]  ${!pokemon && 'animate-bounce'}`} src={pokemon ? pokemon.img : pokeballImage} alt="pokemon sprite" />
+                }
             </div>
         </>
     )

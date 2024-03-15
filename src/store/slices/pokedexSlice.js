@@ -5,8 +5,8 @@ const initialState = {
   loadingPokemonList: false,
   selectedPokemon: null,
   pokemonList: [],
-  previous:false,
-  next:true,
+  previous: false,
+  next: true,
   offset: 0,
   limit: 20,
   errorMessage: null
@@ -16,10 +16,10 @@ export const pokedexSlice = createSlice({
   name: 'pokedex',
   initialState,
   reducers: {
-    onSetLoadingPokemon:(state, {payload})=>{
+    onSetLoadingPokemon: (state, { payload }) => {
       state.loadingPokemon = payload;
     },
-    onSetLoadingPokemonList:(state, {payload})=>{
+    onSetLoadingPokemonList: (state, { payload }) => {
       state.loadingPokemonList = payload;
     },
     onLoadPokemons: (state, { payload }) => {
@@ -54,15 +54,15 @@ export const pokedexSlice = createSlice({
   },
 })
 
-export const { 
-                onLoadPokemons,
-                onSelectPokemon,
-                onUpdateLimit,
-                onUpdateOffset,
-                onSetLoadingPokemon,
-                onSetLoadingPokemonList,
-                onDisabeleNextSearch,
-                onDisabelePreviousSearch,
-                onSafePokemonSearch,
-                onCleanError,
-                onSetError } = pokedexSlice.actions
+export const {
+  onLoadPokemons,
+  onSelectPokemon,
+  onUpdateLimit,
+  onUpdateOffset,
+  onSetLoadingPokemon,
+  onSetLoadingPokemonList,
+  onDisabeleNextSearch,
+  onDisabelePreviousSearch,
+  onSafePokemonSearch,
+  onCleanError,
+  onSetError } = pokedexSlice.actions

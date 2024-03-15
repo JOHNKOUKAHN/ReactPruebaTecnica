@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { PokemonCard } from '../components/PokemonCard'
 import { PokemonDescription } from '../components/PokemonDescription'
 import { Link, useNavigate, useParams } from 'react-router-dom'

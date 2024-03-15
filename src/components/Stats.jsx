@@ -1,4 +1,4 @@
-import { Stat } from "./Stat"
+import { Stat } from "./index"
 
 export const Stats = ({ stats }) => {
     return (
@@ -6,9 +6,8 @@ export const Stats = ({ stats }) => {
             <p className='font-bold text-center'>Base stats</p>
             <ul>
 
-                {
-                    stats.map((stat) => (
-                        <Stat key={stat.name} stat={stat}/> 
+                {stats.map((stat) => (
+                        <Stat key={stat.name} stat={stat} />
                     ))
                 }
 
