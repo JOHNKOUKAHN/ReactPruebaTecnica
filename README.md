@@ -27,7 +27,7 @@ Para ejecutar la aplicación en tu entorno local, sigue estos pasos:
 1. Clona este repositorio:
 
    ```bash
-   git clone https://github.com/JOHNKOUKAHN/ReactPruebaTecnica
+   git clone https://github.com/JOHNKOUKAHN/ReactPruebaTecnica.git
 
 2. Navega al directorio del proyecto:
 
