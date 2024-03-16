@@ -27,7 +27,7 @@ Para ejecutar la aplicación en tu entorno local, sigue estos pasos:
 1. Clona este repositorio:
 
    ```bash
-   git clone https://github.com/tu-usuario/pokedex-app.git
+   git clone https://github.com/JOHNKOUKAHN/ReactPruebaTecnica
 
 2. Navega al directorio del proyecto:
 
